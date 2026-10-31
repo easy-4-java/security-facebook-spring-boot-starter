@@ -153,6 +153,7 @@
         </dependency>
 
         <!-- For Slf4j -->
+        <dependency><groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId><version>${slf4j.version}</version></dependency>
 
         <!-- For Slf4j Simple -->
 
@@ -189,10 +190,13 @@
         </dependency>
 
         <!-- For OkHttp -->
+        <dependency><groupId>com.squareup.okhttp3</groupId><artifactId>okhttp</artifactId><version>${okhttp.version}</version></dependency>
 
         <!-- For Commons Codec -->
+        <dependency><groupId>commons-codec</groupId><artifactId>commons-codec</artifactId><version>${commons-codec.version}</version></dependency>
 
         <!-- Source: https://github.com/easy-4-java/security-biz-spring-boot-starter — easy4j security-biz-spring-boot-starter -->
+        <dependency><groupId>io.github.easy4j</groupId><artifactId>security-biz-spring-boot-starter</artifactId><version>${spring-boot-starter-security-biz.version}</version></dependency>
 
         <!-- For JUnit Jupiter -->
         <dependency>
