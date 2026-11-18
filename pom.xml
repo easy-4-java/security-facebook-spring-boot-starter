@@ -66,6 +66,9 @@
         <okhttp.version>4.12.0</okhttp.version>
         <slf4j.version>2.0.18</slf4j.version>
         <spring-boot-starter-security-biz.version>4.1.x.20260630-SNAPSHOT</spring-boot-starter-security-biz.version>
+        <spring-security-facebook.version>3.0.x.20260630-SNAPSHOT</spring-security-facebook.version>
+        <spring-security-extension.version>3.0.x.20260630-SNAPSHOT</spring-security-extension.version>
+        <spring-extension.version>3.0.x.20260630-SNAPSHOT</spring-extension.version>
         <!-- Maven Plugin Dependencies -->
         <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
         <maven-central-publishing-plugin.version>0.11.0</maven-central-publishing-plugin.version>
@@ -153,6 +156,7 @@
         </dependency>
 
         <!-- For Slf4j -->
+        <dependency><groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId><version>${slf4j.version}</version></dependency>
 
         <!-- For Slf4j Simple -->
 
@@ -189,10 +193,16 @@
         </dependency>
 
         <!-- For OkHttp -->
+        <dependency><groupId>com.squareup.okhttp3</groupId><artifactId>okhttp</artifactId><version>${okhttp.version}</version></dependency>
 
         <!-- For Commons Codec -->
+        <dependency><groupId>commons-codec</groupId><artifactId>commons-codec</artifactId><version>${commons-codec.version}</version></dependency>
 
         <!-- Source: https://github.com/easy-4-java/security-biz-spring-boot-starter — easy4j security-biz-spring-boot-starter -->
+        <dependency><groupId>io.github.easy4j</groupId><artifactId>security-biz-spring-boot-starter</artifactId><version>${spring-boot-starter-security-biz.version}</version></dependency>
+        <dependency><groupId>io.github.easy4j</groupId><artifactId>spring-security-facebook</artifactId><version>${spring-security-facebook.version}</version></dependency>
+        <dependency><groupId>io.github.easy4j</groupId><artifactId>spring-security-extension</artifactId><version>${spring-security-extension.version}</version></dependency>
+        <dependency><groupId>io.github.easy4j</groupId><artifactId>spring-extension</artifactId><version>${spring-extension.version}</version></dependency>
 
         <!-- For JUnit Jupiter -->
         <dependency>
