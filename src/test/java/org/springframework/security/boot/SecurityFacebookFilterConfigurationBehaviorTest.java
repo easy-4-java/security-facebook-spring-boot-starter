@@ -13,11 +13,17 @@ import org.springframework.security.boot.biz.authentication.nested.MatchedAuthen
 import org.springframework.security.boot.biz.property.SecuritySessionMgtProperties;
 import org.springframework.security.boot.facebook.authentication.FacebookAccessTokenAuthenticationProcessingFilter;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.RETURNS_SELF;
+import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class SecurityFacebookFilterConfigurationBehaviorTest {
 
@@ -25,7 +31,6 @@ class SecurityFacebookFilterConfigurationBehaviorTest {
     void createsConfiguredFacebookAuthenticationFilter() throws Exception {
         StaticListableBeanFactory beans = new StaticListableBeanFactory();
         beans.addBean("objectMapper", new ObjectMapper());
-        beans.addBean("okHttpClient", new OkHttpClient());
         beans.addBean("authenticationProvider", mock(AuthenticationProvider.class));
 
         SecurityFacebookFilterConfiguration.FacebookWebSecurityCustomizerAdapter adapter =
@@ -47,5 +52,10 @@ class SecurityFacebookFilterConfigurationBehaviorTest {
 
         FacebookAccessTokenAuthenticationProcessingFilter filter = adapter.authenticationProcessingFilter();
         assertNotNull(filter);
+
+        HttpSecurity http = mock(HttpSecurity.class, RETURNS_SELF);
+        when(http.build()).thenReturn(mock(DefaultSecurityFilterChain.class));
+        assertNotNull(adapter.facebookSecurityFilterChain(http));
+        adapter.customize(mock(WebSecurity.class, RETURNS_DEEP_STUBS));
     }
 }
